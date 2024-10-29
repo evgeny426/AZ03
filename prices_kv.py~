@@ -1,0 +1,13 @@
+import pandas as pd
+
+# Загрузка данных из CSV файла
+df = pd.read_csv('prices.csv')  # Замените 'your_file.csv' на имя вашего файла
+
+# Предполагаем, что нужные данные находятся в столбце с именем 'price' (замените на нужное имя столбца)
+# Удаляем '₽/мес' и преобразуем в число
+df['Price'] = df['Price'].str.replace('₽/мес', '').str.strip().astype(float)
+
+# Сохраняем изменения в новый CSV файл (или перезаписываем оригинал)
+df.to_csv('processed_file.csv', index=False)  # Замените 'processed_file.csv' на нужное имя файла
+
+print("Обработка завершена. Данные сохранены в 'processed_file.csv'.")
